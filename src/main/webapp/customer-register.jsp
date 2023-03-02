@@ -2,6 +2,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
+<%@ taglib prefix= "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${sessionScope.language}" />
+<fmt:setBundle basename="ApplicationResource" />
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +19,7 @@
         <div class="container">
 
             <div class="ol-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto mt-lg-5 content">
-                <h1>Customer Register</h1>
+                <h1><fmt:message key="newAccount.createAccount" /></h1>
 
                 <c:if test="${emptyData != null}">
                     <div class="alert alert-danger mt-2 alert-dismissible" role="alert">
@@ -57,33 +62,33 @@
                 <form action="CustomerController" method="POST">
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label> <input
+                        <label for="name" class="form-label"><fmt:message key="newAccount.name" /></label> <input
                             type="text" class="form-control" id="nameInput" name='name'
                             />
                     </div>
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Email</label> <input
+                        <label for="name" class="form-label"><fmt:message key="newAccount.email" /></label> <input
                             type="email" class="form-control" id="nameInput" name='email'
                             />
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label> <input
+                        <label for="password" class="form-label"><fmt:message key="newAccount.psw" /></label> <input
                             type='password' class="form-control" id="passwordInput"
                             name='password' />
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password Confirm</label> <input
+                        <label for="password" class="form-label"><fmt:message key="newAccount.confirmPsw" /></label> <input
                             type='password' class="form-control" id="passwordInput"
                             name='cpassword' />
                     </div>
 
                     <div class='mb-3'>
-                        <input type='submit' class='btn btn-primary w-100 mb-3' name='action'
-                               value='Register'>
-                        <a href="customer-login.jsp">click here to login</a>
+                        <button type='submit' class='btn btn-primary w-100 mb-3' name='action'
+                               value='Register'><fmt:message key="newAccount.createAccount" /></button>
+                        <a href="customer-login.jsp"><fmt:message key="login.login" /></a>
                        
                     </div>
                 </form>
