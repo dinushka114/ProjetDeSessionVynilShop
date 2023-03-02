@@ -112,7 +112,7 @@
             let qtys = "";
             const cartData = JSON.parse(localStorage.getItem("cart"));
             if(cartData===null || Object.keys(cartData).length===0){
-                alert("Your cart is empty!!")
+                alert("Your cart is empty!!");
                 return;
                 
             }

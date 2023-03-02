@@ -53,7 +53,7 @@
                         
                         <button type="submit" name="action" class='btn btn-primary w-100 mb-3' value="Login"><fmt:message key="login.login" /></button>
 
-                        <a href="customer-register.jsp">don't have an account?</a>
+                        <a href="customer-register.jsp"><fmt:message key="login.createAnAccount" /></a>
 
                     </div>
                 </form>

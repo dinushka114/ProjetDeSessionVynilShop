@@ -137,7 +137,7 @@
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Image</label>
-                                    <input type="file" class="form-control" id="name" aria-describedby="emailHelp" name="image" value="<c:out value="${val.image}" />">
+                                    <input type="file" required="" class="form-control" id="name" aria-describedby="emailHelp" name="image" value="<c:out value="${val.image}" />">
                                 </div>
 
                                 <div class="mb-3">
