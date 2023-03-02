@@ -2,6 +2,8 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
+
 <!DOCTYPE html>
 <html>
     <head>   
@@ -53,8 +55,8 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Order ID</th>
+                                    <th>#</th>
+                                    <th> Order ID </th>
                                     <th>Product Name</th>
                                     <th>Quantity</th>
                                     <th>Customer Email</th>

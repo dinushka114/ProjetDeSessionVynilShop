@@ -3,6 +3,11 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
+<%@ taglib prefix= "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${sessionScope.language}" />
+<fmt:setBundle basename="ApplicationResource" />
+
 <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
                    url="jdbc:mysql://localhost:3306/monshopvynilvault" user="root"
                    password="123" />
@@ -15,24 +20,20 @@
 <html>
     <head>
         <jsp:include page="includes/header.jsp" />
-        <title>Vynil Shop - cart</title>
+        <title><fmt:message key="detailProduct.add" /> </title>
     </head>
     <body>
         <jsp:include page="includes/user-nav.jsp" />
         <div class="container">
 
-
-            <h2 class="mt-4 mb-4">Shopping Cart</h2>
-
-            <table class="table table-striped">
+            <table class="table table-striped mt-5">
                 <thead>
                     <tr>
-                        <th>Item Id</th>
-                        <th>Image</th>
-                        <th>Item Name</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Remove</th>
+                        <th>#</th>
+                        <th><fmt:message key="orders.name" /> </th>
+                        <th><fmt:message key="orders.quantity" /> </th>
+                        <th><fmt:message key="cart.price" /> </th>
+                        <th><fmt:message key="cart.delete" /></th>
 
                     </tr>
                 </thead>
@@ -49,14 +50,14 @@
             <c:choose>
                 <c:when test="${sessionScope.userId != null}">
                     <form action="CustomerController" method="POST" id="buyNowForm">
-                        <input class="btn btn-outline-success" type="submit" value="Buy now" name="action" />
+                        <button class="btn btn-outline-success" type="submit" value="Buy now" name="action"><fmt:message key="cart.buy" /></button>
                     </form>
                 </c:when>
                 <c:when test="${sessionScope.userId == null}">
                     <form action="CustomerController" method="POST">
-                        <input disabled class="btn btn-outline-success" type="submit" value="Buy now" name="action" />
+                        <input disabled class="btn btn-outline-success" type="submit" value="<fmt:message key="cart.buy" />" name="action" />
                     </form>
-                    <p>You need to <a href="customer-login.jsp">login</a> to the system to buy product</p>
+                    <a href="customer-login.jsp"><fmt:message key="login.login" /></a>
                 </c:when>
             </c:choose>
 
@@ -84,10 +85,8 @@
                 html += `
                         <tr>
                         <td>\${item}</td>
-                        <td>
-                                <img class='img-fluid' width='150px' src=data:image/jpeg;base64,\${cartData[item].image} />
-                        </td>
-                        <td>\${cartData[item].title}</td>
+                    
+                        <td>\${cartData[item].title} <img class='img-fluid' width='150px' src=data:image/jpeg;base64,\${cartData[item].image} /> </td>
                         <td> <button class="btn btn-outline-primary" onclick="removeFromCart('\${item}','\${cartData[item].price}','\${cartData[item].title}','\${cartData[item].image}');showCart()" >-</button> <span style="padding:5px">\${cartData[item].qty}</span> <button onclick="addToCart('\${item}','\${cartData[item].price}','\${cartData[item].title}','\${cartData[item].image}');showCart()" class="btn btn-outline-primary">+</button> </td>
                         <td>\${cartData[item].price * cartData[item].qty}</td>
                         <td> <button onclick="remove('\${item}','\${cartData[item].price * cartData[item].qty}' , '\${cartData[item].qty}');showCart();updateCart();" class="btn btn-danger"><i class="fas fa-trash"></i></button> </td>

@@ -44,7 +44,7 @@
                                 <div class="mt-3 d-flex justify-content-between">
                                     <button class="btn btn-outline-dark" onclick="addToCart('${product.id}','${product.price}','${product.name}','${product.image}')" ><fmt:message key="detailProduct.add" /></button>
                                     
-                                    <a class="btn btn-primary" href="order-now?quantity=1&id=1" id="btn-hover">Buy Now</a>
+                                    <!--<a class="btn btn-primary" href="order-now?quantity=1&id=1" id="btn-hover">Buy Now</a>-->
                                 </div>
                                 <br>
                                 <a class="btn btn-link" href="product-details.jsp?id=${product.id}"><fmt:message key="detailProduct.product" /></a>
